@@ -3,10 +3,10 @@
   "exclude": ["node_modules", "**/dist"],
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ESNext"],
-    "module": "NodeNext",
-
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
     "noEmit": true
-  },
-  "references": [{ "path": "./tsconfig.build.json" }]
+  }
 }

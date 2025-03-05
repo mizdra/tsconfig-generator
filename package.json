@@ -17,8 +17,9 @@
     }
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "dev": "npm run build && node bin/example-command.js",
+    "build": "vite build",
+    "dev": "vite dev",
+    "preview": "vite preview",
     "lint": "run-s -c lint:*",
     "lint:tsc": "tsc -b",
     "lint:eslint": "eslint .",
@@ -30,6 +31,9 @@
     "@mizdra/eslint-config-mizdra": "^6.1.0",
     "@mizdra/prettier-config-mizdra": "^2.0.0",
     "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
     "npm-run-all2": "^7.0.2",
     "prettier": "^3.5.3",
@@ -43,16 +47,16 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "bin": {
-    "example-command": "bin/example-command.js"
-  },
   "keywords": [],
   "files": [
-    "bin",
     "src",
     "!src/**/*.test.ts",
     "!src/**/__snapshots__",
     "!src/test",
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
 }
