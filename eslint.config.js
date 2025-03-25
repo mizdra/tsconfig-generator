@@ -2,7 +2,7 @@ import mizdra from '@mizdra/eslint-config-mizdra';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: ['**/dist'] },
+  { ignores: ['**/dist', 'src/vite-env.d.ts'] },
   ...mizdra.baseConfigs,
   ...mizdra.typescriptConfigs,
   ...mizdra.nodeConfigs,
