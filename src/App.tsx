@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './App.module.css';
 import { TSConfigEditor } from './components/TSConfigEditor.js';
 import { TSConfigPreference } from './type.js';
+import { TSConfigViewer } from './components/TSConfigViewer.js';
 
 export function App() {
   const [preference, setPreference] = useState<TSConfigPreference>({
@@ -18,10 +19,11 @@ export function App() {
   });
   return (
     <div className={styles.container}>
-      <h1>tsconfig.json generator for mizdra</h1>
-      <div>
+      <h1>tsconfig.json generator for @mizdra</h1>
+      <main className={styles.column}>
         <TSConfigEditor defaultValue={preference} onEdit={setPreference} />
-      </div>
+        <TSConfigViewer preference={preference} />
+      </main>
     </div>
   );
 }
