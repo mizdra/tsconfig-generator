@@ -1,4 +1,3 @@
-import { getFormProps, getInputProps, useForm, useFormMetadata } from '@conform-to/react';
 import styles from './Form.module.css';
 
 const projectTypes = [
@@ -19,7 +18,7 @@ const typeCheckOptions = [
   { id: 'exactOptionalPropertyTypes', defaultValue: false, label: 'exactOptionalPropertyTypes' },
 ] as const;
 
-interface Schema {
+export interface TSConfigPreference {
   projectType: 'frontend-for-webapp' | 'backend-for-webapp' | 'npm-package';
   noUncheckedIndexedAccess: boolean;
   noImplicitReturns: boolean;
@@ -32,31 +31,42 @@ interface Schema {
   exactOptionalPropertyTypes: boolean;
 }
 
-export function Form() {
-  const [form, fields] = useForm<Schema>({
-    defaultValue: {
-      noUncheckedIndexedAccess: true,
-      noImplicitReturns: true,
-      noFallthroughCasesInSwitch: true,
-      allowUnusedLabels: true,
-      checkJs: true,
-    },
-    shouldValidate: 'onInput',
-    shouldRevalidate: 'onInput',
-    onSubmit: (e, context) => {
-      console.log(context);
-    },
-  });
+interface Props {
+  onEdit: (preference: TSConfigPreference) => void;
+}
 
-  console.log(fields);
+export function Form({ onEdit }: Props) {
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const formData = new FormData(e.currentTarget.form!);
+    const preference: TSConfigPreference = {
+      projectType: formData.get('projectType') as TSConfigPreference['projectType'],
+      noUncheckedIndexedAccess: formData.has('noUncheckedIndexedAccess'),
+      noImplicitReturns: formData.has('noImplicitReturns'),
+      noFallthroughCasesInSwitch: formData.has('noFallthroughCasesInSwitch'),
+      allowUnusedLabels: formData.has('allowUnusedLabels'),
+      checkJs: formData.has('checkJs'),
+      allowUnreachableCode: formData.has('allowUnreachableCode'),
+      noUnusedLocals: formData.has('noUnusedLocals'),
+      noUnusedParameters: formData.has('noUnusedParameters'),
+      exactOptionalPropertyTypes: formData.has('exactOptionalPropertyTypes'),
+    };
+    onEdit(preference);
+  };
 
   return (
-    <form action="" {...getFormProps(form)} onSubmit={(e) => e.preventDefault()}>
+    <form>
       <fieldset className={styles.horizontalFieldset}>
         <legend>Type of project structure</legend>
-        {projectTypes.map((projectType) => (
+        {projectTypes.map((projectType, i) => (
           <label key={projectType.value}>
-            <input {...getInputProps(fields.projectType, { type: 'radio' })} required />
+            <input
+              type="radio"
+              name="projectType"
+              value={projectType.value}
+              defaultChecked={i === 0}
+              required
+              onInput={handleInput}
+            />
             {projectType.label}
           </label>
         ))}
@@ -65,7 +75,7 @@ export function Form() {
         <legend>Type check options</legend>
         {typeCheckOptions.map((option) => (
           <label key={option.id}>
-            <input {...getInputProps(fields[option.id], { type: 'checkbox' })} />
+            <input type="checkbox" name={option.id} onInput={handleInput} />
             {option.label}
           </label>
         ))}
