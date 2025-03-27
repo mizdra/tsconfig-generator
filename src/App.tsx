@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import { TSConfigEditor } from './components/TSConfigEditor.js';
-import { TSConfigPreference } from './preference.js';
 import { TSConfigViewer } from './components/TSConfigViewer.js';
+import type { TSConfigPreference } from './preference.js';
 
 export function App() {
   const [preference, setPreference] = useState<TSConfigPreference>({

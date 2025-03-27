@@ -8,7 +8,7 @@ export default defineConfig([
   globalIgnores(['**/dist', 'src/vite-env.d.ts', 'generated']),
   ...mizdra.baseConfigs,
   ...mizdra.typescriptConfigs,
-  ...mizdra.nodeConfigs,
+  ...mizdra.reactConfigs,
   { plugins: { 'react-compiler': reactCompiler } },
   {
     files: ['**/*.{js,jsx,mjs,cjs}', '**/*.{ts,tsx,cts,mts}'],

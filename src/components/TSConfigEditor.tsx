@@ -1,4 +1,4 @@
-import { TSConfigPreference } from '../preference.js';
+import type { TSConfigPreference } from '../preference.js';
 import styles from './TSConfigEditor.module.css';
 
 const projectTypes = [
@@ -46,7 +46,7 @@ export function TSConfigEditor({ defaultValue, onEdit }: Props) {
     <form>
       <fieldset className={styles.horizontalFieldset}>
         <legend>Type of project structure</legend>
-        {projectTypes.map((projectType, i) => (
+        {projectTypes.map((projectType) => (
           <label key={projectType.value}>
             <input
               type="radio"

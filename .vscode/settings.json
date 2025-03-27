@@ -9,5 +9,5 @@
   "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifierEnding": "js",
   "javascript.preferences.importModuleSpecifierEnding": "js",
-  "eslint.validate": ["css"]
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css"]
 }

@@ -43,6 +43,8 @@ function getOptionsFromProjectType(projectType: TSConfigPreference['projectType'
         rootDir: 'src',
         outDir: 'dist',
       };
+    default:
+      throw new Error(`Unknown project type: ${String(projectType)}`);
   }
 }
 

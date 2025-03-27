@@ -1,4 +1,5 @@
-import { generateTSConfig, TSConfigPreference } from '../preference.js';
+import type { TSConfigPreference } from '../preference.js';
+import { generateTSConfig } from '../preference.js';
 
 interface Props {
   preference: TSConfigPreference;
