@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './App.module.css';
-import { Form } from './components/Form.js';
+import { TSConfigEditor } from './components/TSConfigEditor.js';
 import { TSConfigPreference } from './type.js';
 
 export function App() {
@@ -20,7 +20,7 @@ export function App() {
     <div className={styles.container}>
       <h1>tsconfig.json generator for mizdra</h1>
       <div>
-        <Form defaultValue={preference} onEdit={setPreference} />
+        <TSConfigEditor defaultValue={preference} onEdit={setPreference} />
       </div>
     </div>
   );

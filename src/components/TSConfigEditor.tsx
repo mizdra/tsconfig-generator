@@ -1,5 +1,5 @@
 import { TSConfigPreference } from '../type.js';
-import styles from './Form.module.css';
+import styles from './TSConfigEditor.module.css';
 
 const projectTypes = [
   { value: 'frontend-for-webapp', label: 'Frontend for Web App' },
@@ -24,7 +24,7 @@ interface Props {
   onEdit: (preference: TSConfigPreference) => void;
 }
 
-export function Form({ defaultValue, onEdit }: Props) {
+export function TSConfigEditor({ defaultValue, onEdit }: Props) {
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
     const preference: TSConfigPreference = {
