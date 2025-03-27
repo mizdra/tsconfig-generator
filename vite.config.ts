@@ -6,6 +6,7 @@ const ReactCompilerConfig = {
 };
 
 export default defineConfig({
+  base: '/tsconfig-generator/',
   plugins: [
     react({
       babel: {

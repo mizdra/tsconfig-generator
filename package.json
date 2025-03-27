@@ -8,14 +8,6 @@
   "author": "mizdra <pp.mizdra@gmail.com>",
   "license": "CC0-1.0",
   "private": true,
-  "exports": {
-    ".": {
-      "default": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
   "scripts": {
     "prebuild": "npm run gen",
     "build": "vite build",
