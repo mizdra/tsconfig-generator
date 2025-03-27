@@ -1,24 +1,13 @@
 import React from 'react';
 import styles from './App.module.css';
-import { getFormProps, getInputProps, useForm } from '@conform-to/react';
+import { Form } from './components/Form.js';
 
-interface Schema {
-  email: string;
-}
-
-const App: React.FC = () => {
-  const [form, fields] = useForm<Schema>({});
-
+export function App() {
   return (
     <div className={styles.container}>
       <div>
-        <form {...getFormProps(form)}>
-          <label htmlFor={fields.email.id}>Email</label>
-          <input {...getInputProps(fields.email, { type: 'email' })} />
-        </form>
+        <Form />
       </div>
     </div>
   );
-};
-
-export default App;
+}
