@@ -1,3 +1,4 @@
+import { TSConfigPreference } from '../type.js';
 import styles from './Form.module.css';
 
 const projectTypes = [
@@ -18,24 +19,12 @@ const typeCheckOptions = [
   { id: 'exactOptionalPropertyTypes', defaultValue: false, label: 'exactOptionalPropertyTypes' },
 ] as const;
 
-export interface TSConfigPreference {
-  projectType: 'frontend-for-webapp' | 'backend-for-webapp' | 'npm-package';
-  noUncheckedIndexedAccess: boolean;
-  noImplicitReturns: boolean;
-  noFallthroughCasesInSwitch: boolean;
-  allowUnusedLabels: boolean;
-  checkJs: boolean;
-  allowUnreachableCode: boolean;
-  noUnusedLocals: boolean;
-  noUnusedParameters: boolean;
-  exactOptionalPropertyTypes: boolean;
-}
-
 interface Props {
+  defaultValue: TSConfigPreference;
   onEdit: (preference: TSConfigPreference) => void;
 }
 
-export function Form({ onEdit }: Props) {
+export function Form({ defaultValue, onEdit }: Props) {
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
     const preference: TSConfigPreference = {
@@ -63,7 +52,7 @@ export function Form({ onEdit }: Props) {
               type="radio"
               name="projectType"
               value={projectType.value}
-              defaultChecked={i === 0}
+              defaultChecked={defaultValue.projectType === projectType.value}
               required
               onInput={handleInput}
             />
@@ -75,7 +64,7 @@ export function Form({ onEdit }: Props) {
         <legend>Type check options</legend>
         {typeCheckOptions.map((option) => (
           <label key={option.id}>
-            <input type="checkbox" name={option.id} onInput={handleInput} />
+            <input type="checkbox" name={option.id} defaultChecked={defaultValue[option.id]} onInput={handleInput} />
             {option.label}
           </label>
         ))}
