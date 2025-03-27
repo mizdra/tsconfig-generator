@@ -1,4 +1,4 @@
-import { TSConfigPreference } from '../type.js';
+import { TSConfigPreference } from '../preference.js';
 import styles from './TSConfigEditor.module.css';
 
 const projectTypes = [
@@ -8,15 +8,15 @@ const projectTypes = [
 ] as const;
 
 const typeCheckOptions = [
-  { id: 'noUncheckedIndexedAccess', defaultValue: true, label: 'noUncheckedIndexedAccess' },
-  { id: 'noImplicitReturns', defaultValue: true, label: 'noImplicitReturns' },
-  { id: 'noFallthroughCasesInSwitch', defaultValue: true, label: 'noFallthroughCasesInSwitch' },
+  { id: 'allowUnreachableCode', defaultValue: false, label: 'allowUnreachableCode' },
   { id: 'allowUnusedLabels', defaultValue: true, label: 'allowUnusedLabels' },
   { id: 'checkJs', defaultValue: true, label: 'checkJs' },
-  { id: 'allowUnreachableCode', defaultValue: false, label: 'allowUnreachableCode' },
+  { id: 'exactOptionalPropertyTypes', defaultValue: false, label: 'exactOptionalPropertyTypes' },
+  { id: 'noFallthroughCasesInSwitch', defaultValue: true, label: 'noFallthroughCasesInSwitch' },
+  { id: 'noImplicitReturns', defaultValue: true, label: 'noImplicitReturns' },
+  { id: 'noUncheckedIndexedAccess', defaultValue: true, label: 'noUncheckedIndexedAccess' },
   { id: 'noUnusedLocals', defaultValue: false, label: 'noUnusedLocals' },
   { id: 'noUnusedParameters', defaultValue: false, label: 'noUnusedParameters' },
-  { id: 'exactOptionalPropertyTypes', defaultValue: false, label: 'exactOptionalPropertyTypes' },
 ] as const;
 
 interface Props {
