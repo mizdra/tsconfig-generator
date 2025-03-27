@@ -1,0 +1,10 @@
+.horizontalFieldset {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.verticalFieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

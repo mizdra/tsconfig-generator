@@ -5,6 +5,7 @@ import { Form } from './components/Form.js';
 export function App() {
   return (
     <div className={styles.container}>
+      <h1>tsconfig.json generator for mizdra</h1>
       <div>
         <Form />
       </div>
