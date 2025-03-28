@@ -14,12 +14,15 @@ export interface TSConfigPreference {
 export function generateTSConfig(preference: TSConfigPreference): string {
   let result = '{\n';
   result += '  "compilerOptions": {\n';
+  result += '    /* Basic */\n';
   result += '    "esModuleInterop": true,\n';
   result += '    "forceConsistentCasingInFileNames": true,\n';
   result += '    "strict": true,\n';
   result += '    "skipLibCheck": true,\n';
   result += '    "erasableSyntaxOnly": true,\n';
   result += '    "verbatimModuleSyntax": true,\n';
+  result += '\n';
+  result += '    /* Projects */\n';
   switch (preference.projectType) {
     case 'frontend-for-webapp':
       result += '    "target": "esnext",\n';
@@ -49,6 +52,8 @@ export function generateTSConfig(preference: TSConfigPreference): string {
     default:
       break;
   }
+  result += '\n';
+  result += '    /* Type Checking */\n';
   if (preference.allowUnreachableCode) result += '    "allowUnreachableCode": true,\n';
   if (preference.allowUnusedLabels) result += '    "allowUnusedLabels": true,\n';
   if (preference.checkJs) result += '    "checkJs": true,\n';
