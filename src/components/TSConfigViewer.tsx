@@ -6,5 +6,5 @@ interface Props {
 }
 
 export function TSConfigViewer({ preference }: Props) {
-  return <pre>{JSON.stringify(generateTSConfig(preference), null, 2)}</pre>;
+  return <pre>{generateTSConfig(preference)}</pre>;
 }

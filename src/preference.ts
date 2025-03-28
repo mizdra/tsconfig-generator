@@ -11,62 +11,54 @@ export interface TSConfigPreference {
   noUnusedParameters: boolean;
 }
 
-function filterUndefined<T extends object>(obj: T): object {
-  return Object.fromEntries(Object.entries(obj).filter(([, value]) => value !== undefined)) as T;
-}
-
-function getOptionsFromProjectType(projectType: TSConfigPreference['projectType']): object {
-  switch (projectType) {
+export function generateTSConfig(preference: TSConfigPreference): string {
+  let result = '{\n';
+  result += '  "compilerOptions": {\n';
+  result += '    "esModuleInterop": true,\n';
+  result += '    "forceConsistentCasingInFileNames": true,\n';
+  result += '    "strict": true,\n';
+  result += '    "skipLibCheck": true,\n';
+  result += '    "erasableSyntaxOnly": true,\n';
+  result += '    "verbatimModuleSyntax": true,\n';
+  switch (preference.projectType) {
     case 'frontend-for-webapp':
-      return {
-        target: 'esnext',
-        module: 'preserve',
-        moduleResolution: 'bundler',
-        noEmit: true,
-      };
+      result += '    "target": "esnext",\n';
+      result += '    "module": "esnext",\n';
+      result += '    "moduleResolution": "bundler",\n';
+      result += '    "noEmit": true,\n';
+      break;
     case 'backend-for-webapp':
-      return {
-        target: 'esnext',
-        module: 'nodenext',
-        moduleResolution: 'nodenext',
-        noEmit: true,
-        allowImportingTsExtensions: true,
-      };
+      result += '    "target": "esnext",\n';
+      result += '    "module": "esnext",\n';
+      result += '    "moduleResolution": "node",\n';
+      result += '    "noEmit": true,\n';
+      result += '    "allowImportingTsExtensions": true,\n';
+      break;
     case 'npm-package':
-      return {
-        target: 'es2021',
-        module: 'nodenext',
-        moduleResolution: 'nodenext',
-        declaration: true,
-        sourceMap: true,
-        declarationMap: true,
-        rootDir: 'src',
-        outDir: 'dist',
-      };
+      result += '    "target": "esnext",\n';
+      result += '    "module": "esnext",\n';
+      result += '    "moduleResolution": "node",\n';
+      result += '    "noEmit": false,\n';
+      result += '    "allowImportingTsExtensions": true,\n';
+      result += '    "declaration": true,\n';
+      result += '    "sourceMap": true,\n';
+      result += '    "declarationMap": true,\n';
+      result += '    "rootDir": "src",\n';
+      result += '    "outDir": "dist",\n';
+      break;
     default:
-      throw new Error(`Unknown project type: ${String(projectType)}`);
+      break;
   }
-}
-
-export function generateTSConfig(preference: TSConfigPreference): object {
-  return {
-    compilerOptions: filterUndefined({
-      esModuleInterop: true,
-      forceConsistentCasingInFileNames: true,
-      strict: true,
-      skipLibCheck: true,
-      erasableSyntaxOnly: true,
-      verbatimModuleSyntax: true,
-      ...getOptionsFromProjectType(preference.projectType),
-      allowUnreachableCode: preference.allowUnreachableCode || undefined,
-      allowUnusedLabels: preference.allowUnusedLabels || undefined,
-      checkJs: preference.checkJs || undefined,
-      exactOptionalPropertyTypes: preference.exactOptionalPropertyTypes || undefined,
-      noFallthroughCasesInSwitch: preference.noFallthroughCasesInSwitch || undefined,
-      noImplicitReturns: preference.noImplicitReturns || undefined,
-      noUncheckedIndexedAccess: preference.noUncheckedIndexedAccess || undefined,
-      noUnusedLocals: preference.noUnusedLocals || undefined,
-      noUnusedParameters: preference.noUnusedParameters || undefined,
-    }),
-  };
+  if (preference.allowUnreachableCode) result += '    "allowUnreachableCode": true,\n';
+  if (preference.allowUnusedLabels) result += '    "allowUnusedLabels": true,\n';
+  if (preference.checkJs) result += '    "checkJs": true,\n';
+  if (preference.exactOptionalPropertyTypes) result += '    "exactOptionalPropertyTypes": true,\n';
+  if (preference.noFallthroughCasesInSwitch) result += '    "noFallthroughCasesInSwitch": true,\n';
+  if (preference.noImplicitReturns) result += '    "noImplicitReturns": true,\n';
+  if (preference.noUncheckedIndexedAccess) result += '    "noUncheckedIndexedAccess": true,\n';
+  if (preference.noUnusedLocals) result += '    "noUnusedLocals": true,\n';
+  if (preference.noUnusedParameters) result += '    "noUnusedParameters": true,\n';
+  result += '  }\n';
+  result += '}\n';
+  return result;
 }
