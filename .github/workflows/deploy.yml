@@ -1,8 +1,10 @@
 name: Deploy
 
 on:
-  push:
-    branches: ['main']
+  workflow_run:
+    workflows: ['ci']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
