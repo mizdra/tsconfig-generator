@@ -14,6 +14,6 @@ export default defineConfig({
       },
     }),
   ],
-  css: { modules: {} },
+  css: { lightningcss: { cssModules: { dashedIdents: true } } },
   build: { outDir: 'dist' },
 });
