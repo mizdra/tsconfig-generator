@@ -20,6 +20,9 @@ export default defineConfig([
     files: ['**/*.css'],
     language: 'css/css',
     extends: [css.configs.recommended, cssModulesKit.configs.recommended],
+    rules: {
+      'css/no-empty-blocks': 'off',
+    },
   },
   mizdra.prettierConfig,
 ]);
