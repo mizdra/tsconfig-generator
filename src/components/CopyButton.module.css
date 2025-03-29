@@ -1,0 +1,12 @@
+/* eslint-disable css/use-baseline -- Use new features to study */
+
+.button {
+  anchor-name: --anchor;
+}
+
+.tooltip {
+  position-anchor: --anchor;
+  position-area: center block-start;
+  margin: 0;
+  translate: 0% -10%;
+}
