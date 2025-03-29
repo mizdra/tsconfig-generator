@@ -1,4 +1,3 @@
-import '@github/clipboard-copy-element';
 import { useState } from 'react';
 import styles from './App.module.css';
 import { TSConfigEditor } from './components/TSConfigEditor.js';
