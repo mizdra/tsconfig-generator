@@ -24,6 +24,14 @@ export function App() {
         <TSConfigEditor defaultValue={preference} onEdit={setPreference} />
         <TSConfigViewer className={styles.viewer} preference={preference} />
       </main>
+      <footer className={styles.footer}>
+        <p>
+          Copyright (c) 2025{' '}
+          <a href="https://github.com/mizdra" target="_blank" rel="noopener">
+            mizdra
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

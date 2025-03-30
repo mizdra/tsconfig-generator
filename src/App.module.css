@@ -30,3 +30,10 @@
   border: 1px solid;
   padding: 5px 10px;
 }
+
+.footer {
+  padding: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
