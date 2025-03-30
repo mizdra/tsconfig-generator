@@ -1,0 +1,10 @@
+.toast {
+  position: absolute;
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}

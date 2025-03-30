@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './App.module.css';
+import { useToast } from './components/Toast.js';
 import { TSConfigEditor } from './components/TSConfigEditor.js';
 import { TSConfigViewer } from './components/TSConfigViewer.js';
 import type { TSConfigPreference } from './preference.js';
@@ -7,6 +8,7 @@ import { decodePreferenceFromURL, defaultPreference, encodePreferenceToURL } fro
 
 export function App() {
   const [preference, setPreference] = useState<TSConfigPreference>(defaultPreference);
+  const { showInfo, showError } = useToast();
 
   useEffect(() => {
     const preferenceFromURL = decodePreferenceFromURL();
@@ -17,15 +19,10 @@ export function App() {
 
   const handleShare = () => {
     const url = encodePreferenceToURL(preference);
-
     navigator.clipboard
       .writeText(url)
-      .then(() => {
-        alert('URL copied to clipboard');
-      })
-      .catch(() => {
-        alert('Failed to copy URL');
-      });
+      .then(() => showInfo('URL copied!'))
+      .catch((err) => showError(`Failed to copy URL: ${err}`));
   };
 
   return (
