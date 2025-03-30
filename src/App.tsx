@@ -28,7 +28,7 @@ export function App() {
         </div>
       </header>
       <main className={styles.main}>
-        <TSConfigEditor defaultValue={preference} onEdit={setPreference} />
+        <TSConfigEditor preference={preference} onEdit={setPreference} />
         <TSConfigViewer className={styles.viewer} preference={preference} />
       </main>
       <footer className={styles.footer}>

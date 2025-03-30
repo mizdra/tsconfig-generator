@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { TSConfigPreference } from '../preference.js';
 import styles from './TSConfigEditor.module.css';
 
@@ -21,15 +20,14 @@ const typeCheckOptions = [
 ] as const;
 
 interface Props {
-  defaultValue: TSConfigPreference;
+  preference: TSConfigPreference;
   onEdit: (preference: TSConfigPreference) => void;
 }
 
-export function TSConfigEditor({ defaultValue: _defaultValue, onEdit }: Props) {
-  const [defaultValue] = useState(_defaultValue);
+export function TSConfigEditor({ preference, onEdit }: Props) {
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
-    const preference: TSConfigPreference = {
+    const newPreference: TSConfigPreference = {
       projectType: formData.get('projectType') as TSConfigPreference['projectType'],
       noUncheckedIndexedAccess: formData.has('noUncheckedIndexedAccess'),
       noImplicitReturns: formData.has('noImplicitReturns'),
@@ -41,7 +39,7 @@ export function TSConfigEditor({ defaultValue: _defaultValue, onEdit }: Props) {
       noUnusedParameters: formData.has('noUnusedParameters'),
       exactOptionalPropertyTypes: formData.has('exactOptionalPropertyTypes'),
     };
-    onEdit(preference);
+    onEdit(newPreference);
   };
 
   return (
@@ -54,9 +52,9 @@ export function TSConfigEditor({ defaultValue: _defaultValue, onEdit }: Props) {
               type="radio"
               name="projectType"
               value={projectType.value}
-              defaultChecked={defaultValue.projectType === projectType.value}
+              checked={preference.projectType === projectType.value}
               required
-              onInput={handleInput}
+              onChange={handleInput}
             />
             {projectType.label}
           </label>
@@ -66,7 +64,7 @@ export function TSConfigEditor({ defaultValue: _defaultValue, onEdit }: Props) {
         <legend>Type check options</legend>
         {typeCheckOptions.map((option) => (
           <label key={option.id}>
-            <input type="checkbox" name={option.id} defaultChecked={defaultValue[option.id]} onInput={handleInput} />
+            <input type="checkbox" name={option.id} checked={preference[option.id]} onChange={handleInput} />
             <code>{option.label}</code>
           </label>
         ))}
