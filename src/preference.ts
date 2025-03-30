@@ -11,6 +11,70 @@ export interface TSConfigPreference {
   noUnusedParameters: boolean;
 }
 
+export const defaultPreference: TSConfigPreference = {
+  projectType: 'frontend-for-webapp',
+  noUncheckedIndexedAccess: true,
+  noImplicitReturns: true,
+  noFallthroughCasesInSwitch: true,
+  allowUnusedLabels: true,
+  checkJs: true,
+  allowUnreachableCode: false,
+  noUnusedLocals: false,
+  noUnusedParameters: false,
+  exactOptionalPropertyTypes: false,
+};
+
+const typeCheckOptions = [
+  'allowUnreachableCode',
+  'allowUnusedLabels',
+  'checkJs',
+  'exactOptionalPropertyTypes',
+  'noFallthroughCasesInSwitch',
+  'noImplicitReturns',
+  'noUncheckedIndexedAccess',
+  'noUnusedLocals',
+  'noUnusedParameters',
+] as const;
+
+export function encodePreferenceToURL(preference: TSConfigPreference): string {
+  const params = new URLSearchParams();
+
+  // If the value is not the default value, add it to the URL parameters
+
+  if (preference.projectType !== defaultPreference.projectType) {
+    params.set('projectType', preference.projectType);
+  }
+  for (const option of typeCheckOptions) {
+    if (preference[option] !== defaultPreference[option]) {
+      params.set(option, preference[option] ? 'true' : 'false');
+    }
+  }
+
+  const url = new URL(window.location.href);
+  url.search = params.toString();
+  return url.toString();
+}
+
+export function decodePreferenceFromURL(): TSConfigPreference | null {
+  const params = new URLSearchParams(window.location.search);
+  const result = { ...defaultPreference };
+
+  const projectType = params.get('projectType');
+  if (
+    projectType !== null &&
+    (projectType === 'frontend-for-webapp' || projectType === 'backend-for-webapp' || projectType === 'npm-package')
+  ) {
+    result.projectType = projectType;
+  }
+  for (const option of typeCheckOptions) {
+    if (params.has(option)) {
+      result[option] = params.get(option) === 'true';
+    }
+  }
+
+  return result;
+}
+
 export function generateTSConfig(preference: TSConfigPreference): string {
   let result = '{\n';
   result += '  "compilerOptions": {\n';

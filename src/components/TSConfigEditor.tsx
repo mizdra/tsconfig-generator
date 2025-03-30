@@ -22,9 +22,10 @@ const typeCheckOptions = [
 interface Props {
   preference: TSConfigPreference;
   onEdit: (preference: TSConfigPreference) => void;
+  onShare: () => void;
 }
 
-export function TSConfigEditor({ preference, onEdit }: Props) {
+export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
     const newPreference: TSConfigPreference = {
@@ -69,9 +70,14 @@ export function TSConfigEditor({ preference, onEdit }: Props) {
           </label>
         ))}
       </fieldset>
-      <button className={styles.resetButton} type="reset">
-        Reset
-      </button>
+      <div className={styles.buttonContainer}>
+        <button type="reset">Reset</button>
+        {onShare && (
+          <button type="button" onClick={onShare}>
+            Share URL
+          </button>
+        )}
+      </div>
     </form>
   );
 }

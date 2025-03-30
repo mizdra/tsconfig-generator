@@ -4,6 +4,8 @@
   gap: 5px;
 }
 
-.resetButton {
+.buttonContainer {
+  display: flex;
+  gap: 10px;
   margin: 10px 0;
 }
