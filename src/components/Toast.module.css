@@ -1,7 +1,7 @@
 /* eslint-disable css/use-baseline */
 
 .toast {
-  position: absolute;
+  position: fixed;
   top: auto;
   left: auto;
   bottom: 20px;
