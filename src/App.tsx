@@ -19,7 +19,14 @@ export function App() {
   });
   return (
     <div>
-      <header className={styles.header}>tsconfig.json generator for @mizdra</header>
+      <header className={styles.header}>
+        <div className={styles.title}>tsconfig.json generator for @mizdra</div>
+        <div>
+          <a href="https://github.com/mizdra/tsconfig-generator" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </div>
+      </header>
       <main className={styles.main}>
         <TSConfigEditor defaultValue={preference} onEdit={setPreference} />
         <TSConfigViewer className={styles.viewer} preference={preference} />
