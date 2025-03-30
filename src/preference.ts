@@ -63,6 +63,9 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   if (preference.noUncheckedIndexedAccess) result += '    "noUncheckedIndexedAccess": true,\n';
   if (preference.noUnusedLocals) result += '    "noUnusedLocals": true,\n';
   if (preference.noUnusedParameters) result += '    "noUnusedParameters": true,\n';
+  result += '\n';
+  result += '    /* Additional Options */\n';
+  result += '    // ...\n';
   result += '  }\n';
   result += '}\n';
   return result;
