@@ -1,4 +1,5 @@
 {
+  "exclude": ["dist"],
   "compilerOptions": {
     /* Basic */
     "esModuleInterop": true,

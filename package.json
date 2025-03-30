@@ -13,7 +13,7 @@
     "dev": "vite dev",
     "gen": "cmk",
     "preview": "vite preview",
-    "lint": "run-s -c lint:*",
+    "lint": "run-s -c gen lint:*",
     "lint:tsc": "tsc -b",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --cache --check ."
