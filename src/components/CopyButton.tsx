@@ -1,3 +1,4 @@
+import { Button } from './Button.js';
 import styles from './CopyButton.module.css';
 import { useToast } from './Toast.js';
 
@@ -11,8 +12,8 @@ export function CopyButton({ content }: { content: string }) {
   };
 
   return (
-    <button className={styles.button} type="button" onClick={handleCopy}>
+    <Button className={styles.button} onClick={handleCopy}>
       Copy
-    </button>
+    </Button>
   );
 }

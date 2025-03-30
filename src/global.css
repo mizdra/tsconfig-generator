@@ -60,7 +60,7 @@ h6 {
 :root {
   --color-brand: #3178c6;
   --color-info: #3178c6;
-  --color-error: #c62828;
+  --color-error: #c62929c2;
 }
 
 input[type='checkbox'],

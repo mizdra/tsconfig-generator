@@ -1,4 +1,5 @@
 import type { TSConfigPreference } from '../preference.js';
+import { Button } from './Button.js';
 import { useToast } from './Toast.js';
 import styles from './TSConfigEditor.module.css';
 
@@ -74,13 +75,11 @@ export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
         ))}
       </fieldset>
       <div className={styles.buttonContainer}>
+        <Button onClick={onShare}>Share URL</Button>
         {/* TODO: Show modal for reset confirmation */}
-        <button type="reset">Reset</button>
-        {onShare && (
-          <button type="button" onClick={onShare}>
-            Share URL
-          </button>
-        )}
+        <Button type="reset" color="danger">
+          Reset
+        </Button>
       </div>
     </form>
   );
