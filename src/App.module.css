@@ -19,7 +19,8 @@
     flex: 1;
   }
 
-  @media (max-width: 750px) {
+  @media (width <= 750px) {
+    /* eslint-disable-next-line css/no-invalid-at-rules */
     flex-direction: column;
   }
 }
