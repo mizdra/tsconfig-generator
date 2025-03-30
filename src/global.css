@@ -57,6 +57,12 @@ h6 {
 
 /* User preferences */
 
+:root {
+  --color-brand: #3178c6;
+  --color-info: #3178c6;
+  --color-error: #c62828;
+}
+
 input[type='checkbox'],
 input[type='radio'] {
   margin: revert;
@@ -64,6 +70,7 @@ input[type='radio'] {
 
 a {
   text-decoration: none;
+  color: inherit;
   &:visited {
     color: inherit;
   }

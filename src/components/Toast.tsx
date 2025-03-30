@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { createContext, useContext, useRef, useState } from 'react';
 import styles from './Toast.module.css';
 
@@ -31,7 +32,11 @@ export function ToastProvider({ children }: ToastProviderProps) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div ref={tooltipRef} role={type === 'info' ? 'status' : 'alert'} popover="auto" className={styles.toast}>
+      <div
+        ref={tooltipRef}
+        role={type === 'info' ? 'status' : 'alert'}
+        popover="auto"
+        className={clsx(styles.toast, type === 'info' ? styles.info : styles.error)}>
         {tooltipText}
       </div>
     </ToastContext.Provider>

@@ -1,6 +1,6 @@
 .header {
   padding: 10px 15px;
-  background-color: #3178c6;
+  background-color: var(--color-brand);
   color: white;
   font-weight: bold;
   display: flex;

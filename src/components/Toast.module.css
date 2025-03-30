@@ -1,3 +1,5 @@
+/* eslint-disable css/use-baseline */
+
 .toast {
   position: absolute;
   top: auto;
@@ -7,4 +9,13 @@
   padding: 12px 20px;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+  &.info {
+    background-color: var(--color-info);
+    color: white;
+  }
+  &.error {
+    background-color: var(--color-error);
+    color: white;
+  }
 }
