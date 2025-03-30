@@ -1,4 +1,5 @@
 import type { TSConfigPreference } from '../preference.js';
+import { useToast } from './Toast.js';
 import styles from './TSConfigEditor.module.css';
 
 const projectTypes = [
@@ -26,6 +27,7 @@ interface Props {
 }
 
 export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
+  const { showInfo } = useToast();
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
     const newPreference: TSConfigPreference = {
@@ -42,9 +44,10 @@ export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
     };
     onEdit(newPreference);
   };
+  const handleReset = () => showInfo('Reset to default');
 
   return (
-    <form>
+    <form onReset={handleReset}>
       <fieldset className={styles.fieldset}>
         <legend>Type of project structure</legend>
         {projectTypes.map((projectType) => (
@@ -71,6 +74,7 @@ export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
         ))}
       </fieldset>
       <div className={styles.buttonContainer}>
+        {/* TODO: Show modal for reset confirmation */}
         <button type="reset">Reset</button>
         {onShare && (
           <button type="button" onClick={onShare}>
