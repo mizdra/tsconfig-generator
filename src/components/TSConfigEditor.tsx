@@ -69,7 +69,9 @@ export function TSConfigEditor({ preference, onEdit }: Props) {
           </label>
         ))}
       </fieldset>
-      <button type="reset">Reset</button>
+      <button className={styles.resetButton} type="reset">
+        Reset
+      </button>
     </form>
   );
 }
