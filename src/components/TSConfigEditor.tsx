@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { TSConfigPreference } from '../preference.js';
 import styles from './TSConfigEditor.module.css';
 
@@ -24,7 +25,8 @@ interface Props {
   onEdit: (preference: TSConfigPreference) => void;
 }
 
-export function TSConfigEditor({ defaultValue, onEdit }: Props) {
+export function TSConfigEditor({ defaultValue: _defaultValue, onEdit }: Props) {
+  const [defaultValue] = useState(_defaultValue);
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
     const preference: TSConfigPreference = {
