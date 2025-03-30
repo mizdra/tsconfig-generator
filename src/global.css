@@ -52,3 +52,10 @@ h5,
 h6 {
   text-wrap: balance;
 }
+
+/* User preferences */
+
+input[type='checkbox'],
+input[type='radio'] {
+  margin: revert;
+}

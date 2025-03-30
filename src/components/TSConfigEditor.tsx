@@ -44,7 +44,7 @@ export function TSConfigEditor({ defaultValue, onEdit }: Props) {
 
   return (
     <form>
-      <fieldset className={styles.horizontalFieldset}>
+      <fieldset className={styles.fieldset}>
         <legend>Type of project structure</legend>
         {projectTypes.map((projectType) => (
           <label key={projectType.value}>
@@ -60,12 +60,12 @@ export function TSConfigEditor({ defaultValue, onEdit }: Props) {
           </label>
         ))}
       </fieldset>
-      <fieldset className={styles.verticalFieldset}>
+      <fieldset className={styles.fieldset}>
         <legend>Type check options</legend>
         {typeCheckOptions.map((option) => (
           <label key={option.id}>
             <input type="checkbox" name={option.id} defaultChecked={defaultValue[option.id]} onInput={handleInput} />
-            {option.label}
+            <code>{option.label}</code>
           </label>
         ))}
       </fieldset>

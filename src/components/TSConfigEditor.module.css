@@ -1,9 +1,4 @@
-.horizontalFieldset {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-.verticalFieldset {
+.fieldset {
   display: flex;
   flex-direction: column;
   gap: 5px;

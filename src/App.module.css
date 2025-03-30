@@ -1,9 +1,29 @@
-.container {
-  margin: 5px;
+.header {
+  padding: 10px 15px;
+  background-color: #3178c6;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.column {
+.main {
+  padding: 10px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 10px;
+  font-size: 1.1rem;
+
+  /* eslint-disable-next-line css/use-baseline */
+  & > * {
+    flex: 1;
+  }
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
+}
+
+.viewer {
+  overflow-x: scroll;
 }

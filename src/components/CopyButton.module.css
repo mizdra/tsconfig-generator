@@ -7,6 +7,7 @@
 .tooltip {
   position-anchor: --anchor;
   position-area: center block-start;
+  position-try: flip-block; /* MEMO: For some reason, this is not working */
   margin: 0;
   translate: 0% -10%;
 }

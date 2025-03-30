@@ -18,11 +18,11 @@ export function App() {
     exactOptionalPropertyTypes: false,
   });
   return (
-    <div className={styles.container}>
-      <h1>tsconfig.json generator for @mizdra</h1>
-      <main className={styles.column}>
+    <div>
+      <header className={styles.header}>tsconfig.json generator for @mizdra</header>
+      <main className={styles.main}>
         <TSConfigEditor defaultValue={preference} onEdit={setPreference} />
-        <TSConfigViewer preference={preference} />
+        <TSConfigViewer className={styles.viewer} preference={preference} />
       </main>
     </div>
   );
