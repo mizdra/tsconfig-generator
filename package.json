@@ -42,8 +42,11 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "@shikijs/langs": "^3.2.1",
+    "@shikijs/themes": "^3.2.1",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "shiki": "^3.2.1"
   }
 }
