@@ -129,7 +129,7 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   if (preference.noUnusedParameters) result += '    "noUnusedParameters": true,\n';
   result += '\n';
   result += '    /* Additional Options */\n';
-  result += '    // ...\n';
+  result += '    // lib, jsx, ...\n';
   result += '  }\n';
   result += '}\n';
   return result;
