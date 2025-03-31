@@ -39,15 +39,9 @@ const typeCheckOptions = [
 export function encodePreferenceToURL(preference: TSConfigPreference): string {
   const params = new URLSearchParams();
 
-  // If the value is not the default value, add it to the URL parameters
-
-  if (preference.projectType !== defaultPreference.projectType) {
-    params.set('projectType', preference.projectType);
-  }
+  params.set('projectType', preference.projectType);
   for (const option of typeCheckOptions) {
-    if (preference[option] !== defaultPreference[option]) {
-      params.set(option, preference[option] ? 'true' : 'false');
-    }
+    params.set(option, preference[option] ? 'true' : 'false');
   }
 
   const url = new URL(window.location.href);
