@@ -18,7 +18,7 @@ export const defaultPreference: TSConfigPreference = {
   noFallthroughCasesInSwitch: true,
   allowUnusedLabels: true,
   checkJs: true,
-  allowUnreachableCode: false,
+  allowUnreachableCode: true,
   noUnusedLocals: false,
   noUnusedParameters: false,
   exactOptionalPropertyTypes: false,
