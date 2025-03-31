@@ -90,21 +90,21 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   switch (preference.projectType) {
     case 'frontend-for-webapp':
       result += '    "target": "esnext",\n';
-      result += '    "module": "esnext",\n';
-      result += '    "moduleResolution": "bundler",\n';
+      result += '    "module": "preserve",\n';
+      // result += '    "moduleResolution": "bundler",\n'; // auto-set
       result += '    "noEmit": true,\n';
       break;
     case 'backend-for-webapp':
       result += '    "target": "esnext",\n';
-      result += '    "module": "esnext",\n';
-      result += '    "moduleResolution": "node",\n';
+      result += '    "module": "nodenext",\n';
+      // result += '    "moduleResolution": "nodenext",\n'; // auto-set
       result += '    "noEmit": true,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       break;
     case 'npm-package':
-      result += '    "target": "esnext",\n';
-      result += '    "module": "esnext",\n';
-      result += '    "moduleResolution": "node",\n';
+      result += '    "target": "es2021",\n';
+      result += '    "module": "nodenext",\n';
+      // result += '    "moduleResolution": "nodenext",\n'; // auto-set
       result += '    "noEmit": false,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       result += '    "declaration": true,\n';
