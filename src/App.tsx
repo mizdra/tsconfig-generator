@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './App.module.css';
 import { useToast } from './components/Toast.js';
 import { TSConfigEditor } from './components/TSConfigEditor.js';
-import { TSConfigViewer } from './components/TSConfigViewer.js';
+import { TSConfigGenerator } from './components/TSConfigGenerator.js';
 import type { TSConfigPreference } from './preference.js';
 import { decodePreferenceFromURL, defaultPreference, encodePreferenceToURL } from './preference.js';
 
@@ -37,7 +37,7 @@ export function App() {
       </header>
       <main className={styles.main}>
         <TSConfigEditor preference={preference} onEdit={setPreference} onShare={handleShare} />
-        <TSConfigViewer className={styles.viewer} preference={preference} />
+        <TSConfigGenerator className={styles.generator} preference={preference} />
       </main>
       <footer className={styles.footer}>
         <p>

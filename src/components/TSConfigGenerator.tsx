@@ -3,14 +3,14 @@ import type { TSConfigPreference } from '../preference.js';
 import { generateTSConfig } from '../preference.js';
 import { CodeBlock } from './CodeBlock.js';
 import { CopyButton } from './CopyButton.js';
-import styles from './TSConfigViewer.module.css';
+import styles from './TSConfigGenerator.module.css';
 
 interface Props {
   className?: string;
   preference: TSConfigPreference;
 }
 
-export function TSConfigViewer({ className, preference }: Props) {
+export function TSConfigGenerator({ className, preference }: Props) {
   const tsconfig = generateTSConfig(preference);
 
   return (
