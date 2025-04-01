@@ -112,8 +112,8 @@ export function generateTSConfig(preference: TSConfigPreference): string {
       result += '    "noEmit": false,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       result += '    "declaration": true,\n';
-      result += '    "sourceMap": true,\n';
       result += '    "declarationMap": true,\n';
+      result += '    "sourceMap": true,\n';
       result += '    "rootDir": "src",\n';
       result += '    "outDir": "dist",\n';
       break;
