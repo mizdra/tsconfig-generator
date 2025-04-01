@@ -93,14 +93,14 @@ export function generateTSConfig(preference: TSConfigPreference): string {
     case 'backend-for-webapp':
       result += '    "target": "ESNext",\n';
       result += '    "module": "NodeNext",\n';
-      // result += '    "moduleResolution": "NodeNext",\n'; // auto-set
+      // result += '    "moduleResolution": "nodenext",\n'; // auto-set
       result += '    "noEmit": true,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       break;
     case 'npm-package':
       result += '    "target": "ES2021",\n';
       result += '    "module": "NodeNext",\n';
-      // result += '    "moduleResolution": "NodeNext",\n'; // auto-set
+      // result += '    "moduleResolution": "nodenext",\n'; // auto-set
       result += '    "noEmit": false,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       result += '    "declaration": true,\n';
