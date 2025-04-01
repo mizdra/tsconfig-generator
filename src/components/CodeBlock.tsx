@@ -3,6 +3,7 @@ import githubLightHighContrast from '@shikijs/themes/github-light-high-contrast'
 import { useEffect, useState } from 'react';
 import { createHighlighterCore } from 'shiki/core';
 import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
+import styles from './CodeBlock.module.css';
 
 interface Props {
   code: string;
@@ -31,7 +32,7 @@ export function CodeBlock({ code }: Props) {
   }, [code]);
 
   return (
-    <div>
+    <div className={styles.container}>
       {renderedHtml ?
         // eslint-disable-next-line @typescript-eslint/naming-convention
         <div dangerouslySetInnerHTML={{ __html: renderedHtml }} />

@@ -24,6 +24,7 @@
   /* eslint-disable-next-line css/use-baseline */
   & > * {
     flex: 1;
+    min-width: 0;
   }
 
   @media (width <= 750px) {
@@ -33,7 +34,6 @@
 }
 
 .generator {
-  overflow-x: scroll;
   border: 1px solid;
   padding: 5px 10px;
 }
