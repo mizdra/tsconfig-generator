@@ -109,8 +109,6 @@ export function generateTSConfig(preference: TSConfigPreference): string {
       result += '    "target": "ES2021",\n';
       result += '    "module": "NodeNext",\n';
       // result += '    "moduleResolution": "nodenext",\n'; // auto-set
-      result += '    "noEmit": false,\n';
-      result += '    "allowImportingTsExtensions": true,\n';
       result += '    "declaration": true,\n';
       result += '    "declarationMap": true,\n';
       result += '    "sourceMap": true,\n';
