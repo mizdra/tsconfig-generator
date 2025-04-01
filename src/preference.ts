@@ -87,7 +87,7 @@ export function generateTSConfig(preference: TSConfigPreference): string {
       result += '    "module": "preserve",\n';
       // result += '    "moduleResolution": "bundler",\n'; // auto-set
       result += '    "noEmit": true,\n';
-      result += '    "lib": ["esnext", "dom.iterable"],\n';
+      result += '    "lib": ["esnext", "dom.iterable", "DOM.AsyncIterable"],\n';
       result += '    "jsx": "preserve",\n';
       break;
     case 'backend-for-webapp':
