@@ -62,17 +62,47 @@ export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
       <fieldset className={styles.fieldset}>
         <legend>Type of project structure</legend>
         {projectTypes.map((projectType) => (
-          <label key={projectType.value}>
-            <input
-              type="radio"
-              name="projectType"
-              value={projectType.value}
-              checked={preference.projectType === projectType.value}
-              required
-              onChange={handleInput}
-            />
-            {projectType.label}
-          </label>
+          <div key={projectType.value}>
+            <label>
+              <input
+                type="radio"
+                name="projectType"
+                value={projectType.value}
+                checked={preference.projectType === projectType.value}
+                required
+                onChange={handleInput}
+              />
+              {projectType.label}
+            </label>
+            {preference.projectType === 'frontend-for-webapp' && projectType.value === 'frontend-for-webapp' && (
+              <ul>
+                <li>Use a bundler</li>
+                <li>Transpile with a bundler</li>
+                <li>Run the built code on browsers</li>
+                <li>Write components with JSX</li>
+              </ul>
+            )}
+            {preference.projectType === 'backend-for-webapp' && projectType.value === 'backend-for-webapp' && (
+              <ul>
+                <li>
+                  Start with <code>node src/server.ts</code> (Use Node.js Type Stripping)
+                </li>
+                <li>No bundle</li>
+              </ul>
+            )}
+            {preference.projectType === 'npm-package' && projectType.value === 'npm-package' && (
+              <ul>
+                <li>No bundle</li>
+                <li>
+                  Transpile with <code>tsc</code>
+                </li>
+                <li>Run the built code on Node.js</li>
+                <li>
+                  Put source code in <code>src/</code>, and distribution in <code>dist/</code>
+                </li>
+              </ul>
+            )}
+          </div>
         ))}
       </fieldset>
       <fieldset className={styles.fieldset}>
