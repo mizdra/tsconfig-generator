@@ -21,6 +21,21 @@ const typeCheckOptions = [
   { id: 'noUnusedParameters', defaultValue: false, label: 'noUnusedParameters' },
 ] as const;
 
+function getPreferenceFromFormData(formData: FormData): TSConfigPreference {
+  return {
+    projectType: formData.get('projectType') as TSConfigPreference['projectType'],
+    noUncheckedIndexedAccess: formData.has('noUncheckedIndexedAccess'),
+    noImplicitReturns: formData.has('noImplicitReturns'),
+    noFallthroughCasesInSwitch: formData.has('noFallthroughCasesInSwitch'),
+    allowUnusedLabels: formData.has('allowUnusedLabels'),
+    checkJs: formData.has('checkJs'),
+    allowUnreachableCode: formData.has('allowUnreachableCode'),
+    noUnusedLocals: formData.has('noUnusedLocals'),
+    noUnusedParameters: formData.has('noUnusedParameters'),
+    exactOptionalPropertyTypes: formData.has('exactOptionalPropertyTypes'),
+  };
+}
+
 interface Props {
   preference: TSConfigPreference;
   onEdit: (preference: TSConfigPreference) => void;
@@ -31,21 +46,16 @@ export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
   const { showInfo } = useToast();
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const formData = new FormData(e.currentTarget.form!);
-    const newPreference: TSConfigPreference = {
-      projectType: formData.get('projectType') as TSConfigPreference['projectType'],
-      noUncheckedIndexedAccess: formData.has('noUncheckedIndexedAccess'),
-      noImplicitReturns: formData.has('noImplicitReturns'),
-      noFallthroughCasesInSwitch: formData.has('noFallthroughCasesInSwitch'),
-      allowUnusedLabels: formData.has('allowUnusedLabels'),
-      checkJs: formData.has('checkJs'),
-      allowUnreachableCode: formData.has('allowUnreachableCode'),
-      noUnusedLocals: formData.has('noUnusedLocals'),
-      noUnusedParameters: formData.has('noUnusedParameters'),
-      exactOptionalPropertyTypes: formData.has('exactOptionalPropertyTypes'),
-    };
-    onEdit(newPreference);
+    onEdit(getPreferenceFromFormData(formData));
   };
-  const handleReset = () => showInfo('Reset to default');
+  const handleReset = (e: React.FormEvent<HTMLFormElement>) => {
+    showInfo('Reset to default');
+    const form = e.currentTarget;
+    requestAnimationFrame(() => {
+      const formData = new FormData(form);
+      onEdit(getPreferenceFromFormData(formData));
+    });
+  };
 
   return (
     <form onReset={handleReset}>
