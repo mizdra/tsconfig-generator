@@ -98,7 +98,10 @@ export function TSConfigEditor({ preference, onEdit, onShare }: Props) {
                 </li>
                 <li>Run the built code on Node.js</li>
                 <li>
-                  Put source code in <code>src/</code>, and distribution in <code>dist/</code>
+                  Put the source code in <code>src/</code>
+                </li>
+                <li>
+                  Put the built code in <code>dist/</code>
                 </li>
               </ul>
             )}
