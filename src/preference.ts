@@ -87,6 +87,8 @@ export function generateTSConfig(preference: TSConfigPreference): string {
       result += '    "module": "preserve",\n';
       // result += '    "moduleResolution": "bundler",\n'; // auto-set
       result += '    "noEmit": true,\n';
+      result += '    "lib": ["esnext", "dom.iterable"],\n';
+      result += '    "jsx": "preserve",\n';
       break;
     case 'backend-for-webapp':
       result += '    "target": "esnext",\n';
@@ -121,9 +123,6 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   if (preference.noUncheckedIndexedAccess) result += '    "noUncheckedIndexedAccess": true,\n';
   if (preference.noUnusedLocals) result += '    "noUnusedLocals": true,\n';
   if (preference.noUnusedParameters) result += '    "noUnusedParameters": true,\n';
-  result += '\n';
-  result += '    /* Additional Options */\n';
-  result += '    // lib, jsx, ...\n';
   result += '  }\n';
   result += '}\n';
   return result;
