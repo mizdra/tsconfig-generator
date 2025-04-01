@@ -23,7 +23,7 @@
     "noUncheckedIndexedAccess": true,
 
     /* Extra */
-    "lib": ["ESNext", "DOM.Iterable", "DOM.AsyncIterable"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
     "jsx": "preserve",
     "rootDirs": [".", "generated"]
   }
