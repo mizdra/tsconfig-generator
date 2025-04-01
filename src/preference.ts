@@ -83,24 +83,24 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   result += '    /* Projects */\n';
   switch (preference.projectType) {
     case 'frontend-for-webapp':
-      result += '    "target": "esnext",\n';
-      result += '    "module": "preserve",\n';
+      result += '    "target": "ESNext",\n';
+      result += '    "module": "Preserve",\n';
       // result += '    "moduleResolution": "bundler",\n'; // auto-set
       result += '    "noEmit": true,\n';
-      result += '    "lib": ["esnext", "dom.iterable", "DOM.AsyncIterable"],\n';
+      result += '    "lib": ["ESNext", "DOM.Iterable", "DOM.AsyncIterable"],\n';
       result += '    "jsx": "preserve",\n';
       break;
     case 'backend-for-webapp':
-      result += '    "target": "esnext",\n';
-      result += '    "module": "nodenext",\n';
-      // result += '    "moduleResolution": "nodenext",\n'; // auto-set
+      result += '    "target": "ESNext",\n';
+      result += '    "module": "NodeNext",\n';
+      // result += '    "moduleResolution": "NodeNext",\n'; // auto-set
       result += '    "noEmit": true,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       break;
     case 'npm-package':
-      result += '    "target": "es2021",\n';
-      result += '    "module": "nodenext",\n';
-      // result += '    "moduleResolution": "nodenext",\n'; // auto-set
+      result += '    "target": "ES2021",\n';
+      result += '    "module": "NodeNext",\n';
+      // result += '    "moduleResolution": "NodeNext",\n'; // auto-set
       result += '    "noEmit": false,\n';
       result += '    "allowImportingTsExtensions": true,\n';
       result += '    "declaration": true,\n';
