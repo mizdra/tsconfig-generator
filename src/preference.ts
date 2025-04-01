@@ -1,39 +1,39 @@
 export interface TSConfigPreference {
   projectType: 'frontend-for-webapp' | 'backend-for-webapp' | 'npm-package';
-  allowUnreachableCode: boolean;
-  allowUnusedLabels: boolean;
   checkJs: boolean;
-  exactOptionalPropertyTypes: boolean;
-  noFallthroughCasesInSwitch: boolean;
-  noImplicitReturns: boolean;
-  noUncheckedIndexedAccess: boolean;
   noUnusedLocals: boolean;
   noUnusedParameters: boolean;
+  exactOptionalPropertyTypes: boolean;
+  noImplicitReturns: boolean;
+  noFallthroughCasesInSwitch: boolean;
+  noUncheckedIndexedAccess: boolean;
+  allowUnusedLabels: boolean;
+  allowUnreachableCode: boolean;
 }
 
 export const defaultPreference: TSConfigPreference = {
   projectType: 'frontend-for-webapp',
-  noUncheckedIndexedAccess: true,
-  noImplicitReturns: true,
-  noFallthroughCasesInSwitch: true,
-  allowUnusedLabels: true,
   checkJs: true,
-  allowUnreachableCode: true,
   noUnusedLocals: false,
   noUnusedParameters: false,
   exactOptionalPropertyTypes: false,
+  noImplicitReturns: true,
+  noFallthroughCasesInSwitch: true,
+  noUncheckedIndexedAccess: true,
+  allowUnusedLabels: true,
+  allowUnreachableCode: true,
 };
 
 const typeCheckOptions = [
-  'allowUnreachableCode',
-  'allowUnusedLabels',
   'checkJs',
-  'exactOptionalPropertyTypes',
-  'noFallthroughCasesInSwitch',
-  'noImplicitReturns',
-  'noUncheckedIndexedAccess',
   'noUnusedLocals',
   'noUnusedParameters',
+  'exactOptionalPropertyTypes',
+  'noImplicitReturns',
+  'noFallthroughCasesInSwitch',
+  'noUncheckedIndexedAccess',
+  'allowUnusedLabels',
+  'allowUnreachableCode',
 ] as const;
 
 export function encodePreferenceToURL(preference: TSConfigPreference): string {
@@ -114,15 +114,15 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   }
   result += '\n';
   result += '    /* Type Checking */\n';
-  if (preference.allowUnreachableCode) result += '    "allowUnreachableCode": true,\n';
-  if (preference.allowUnusedLabels) result += '    "allowUnusedLabels": true,\n';
   if (preference.checkJs) result += '    "checkJs": true,\n';
-  if (preference.exactOptionalPropertyTypes) result += '    "exactOptionalPropertyTypes": true,\n';
-  if (preference.noFallthroughCasesInSwitch) result += '    "noFallthroughCasesInSwitch": true,\n';
-  if (preference.noImplicitReturns) result += '    "noImplicitReturns": true,\n';
-  if (preference.noUncheckedIndexedAccess) result += '    "noUncheckedIndexedAccess": true,\n';
   if (preference.noUnusedLocals) result += '    "noUnusedLocals": true,\n';
   if (preference.noUnusedParameters) result += '    "noUnusedParameters": true,\n';
+  if (preference.exactOptionalPropertyTypes) result += '    "exactOptionalPropertyTypes": true,\n';
+  if (preference.noImplicitReturns) result += '    "noImplicitReturns": true,\n';
+  if (preference.noFallthroughCasesInSwitch) result += '    "noFallthroughCasesInSwitch": true,\n';
+  if (preference.noUncheckedIndexedAccess) result += '    "noUncheckedIndexedAccess": true,\n';
+  if (preference.allowUnusedLabels) result += '    "allowUnusedLabels": true,\n';
+  if (preference.allowUnreachableCode) result += '    "allowUnreachableCode": true,\n';
   result += '  }\n';
   result += '}\n';
   return result;
