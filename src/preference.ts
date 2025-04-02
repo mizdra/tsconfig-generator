@@ -85,7 +85,6 @@ export function generateTSConfig(preference: TSConfigPreference): string {
   result += '    "forceConsistentCasingInFileNames": true,\n';
   result += '    "strict": true,\n';
   result += '    "skipLibCheck": true,\n';
-  result += '    "erasableSyntaxOnly": true,\n';
   result += '    "verbatimModuleSyntax": true,\n';
   result += '\n';
   result += '    /* Projects */\n';
@@ -104,6 +103,7 @@ export function generateTSConfig(preference: TSConfigPreference): string {
       // result += '    "moduleResolution": "nodenext",\n'; // auto-set
       result += '    "noEmit": true,\n';
       result += '    "allowImportingTsExtensions": true,\n';
+      result += '    "erasableSyntaxOnly": true,\n';
       break;
     case 'npm-package':
       result += '    "target": "ES2021",\n';
