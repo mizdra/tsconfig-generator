@@ -1,3 +1,9 @@
 .container {
   overflow-x: scroll;
+
+  /* Added padding to prevent the code from being hidden by the copy button */
+  padding-right: 5em;
+}
+.codeBlock {
+  width: fit-content;
 }

@@ -35,7 +35,7 @@ export function CodeBlock({ code }: Props) {
     <div className={styles.container}>
       {renderedHtml ?
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        <div dangerouslySetInnerHTML={{ __html: renderedHtml }} />
+        <div className={styles.codeBlock} dangerouslySetInnerHTML={{ __html: renderedHtml }} />
       : 'Loading...'}
     </div>
   );
